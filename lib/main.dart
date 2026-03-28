@@ -203,6 +203,7 @@ class _MainScaffoldState extends State<MainScaffold> {
       valueListenable: themeNotifier,
       builder: (context, _, _) => Scaffold(
         appBar: AppBar(
+          iconTheme: const IconThemeData(color: Colors.white),
           title: Text(
             _titles[_currentIndex],
             style: TextStyle(fontWeight: FontWeight.bold, color: _cfg.titleColor),
