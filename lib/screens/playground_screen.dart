@@ -168,6 +168,10 @@ class _PlaygroundScreenState extends State<PlaygroundScreen> {
       controller: _scrollController,
       padding: const EdgeInsets.all(16),
       children: [
+        // Card d'introduction
+        const _InfoCard(),
+        const SizedBox(height: 20),
+
         // Model selector
         _SectionLabel(label: 'Modèle'),
         Wrap(
@@ -515,6 +519,85 @@ class _SliderRow extends StatelessWidget {
                   color: accentMid, fontFamily: 'monospace', fontSize: 12)),
         ),
       ],
+    );
+  }
+}
+
+class _InfoCard extends StatelessWidget {
+  const _InfoCard();
+
+  @override
+  Widget build(BuildContext context) {
+    final items = [
+      (Icons.tune, 'Ajustez les paramètres',
+          'Temperature contrôle la créativité (0 = déterministe, 2 = très créatif). Top P filtre le vocabulaire utilisé. Max Tokens limite la longueur de la réponse.'),
+      (Icons.model_training, 'Choisissez le bon modèle',
+          'grok-3 pour les réponses les plus puissantes, grok-3-mini pour la rapidité et l\'efficacité, grok-2-vision pour analyser des images, grok-beta pour les fonctionnalités expérimentales.'),
+      (Icons.bolt, 'Pourquoi ce playground ?',
+          'Testez en direct l\'impact de chaque paramètre sur les réponses de l\'API Grok, sans écrire de code. Idéal pour calibrer vos prompts avant intégration.'),
+    ];
+
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: context.tipBg,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: context.tipBorder),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 32,
+                height: 32,
+                decoration: BoxDecoration(
+                  color: context.accentLight.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(Icons.science_outlined,
+                    color: context.accentLight, size: 18),
+              ),
+              const SizedBox(width: 10),
+              Text('Comment utiliser le Playground',
+                  style: TextStyle(
+                      color: context.accentLight,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14)),
+            ],
+          ),
+          const SizedBox(height: 12),
+          ...items.map((item) => Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(item.$1, color: context.accentMid, size: 16),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(item.$2,
+                              style: TextStyle(
+                                  color: context.onSurface,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12)),
+                          const SizedBox(height: 2),
+                          Text(item.$3,
+                              style: TextStyle(
+                                  color: context.onSurface.withValues(alpha: 0.65),
+                                  fontSize: 11,
+                                  height: 1.4)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )),
+        ],
+      ),
     );
   }
 }

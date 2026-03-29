@@ -7,6 +7,7 @@ import 'screens/prompts_screen.dart';
 import 'screens/features_screen.dart';
 import 'screens/chat_screen.dart';
 import 'screens/playground_screen.dart';
+import 'screens/splash_screen.dart';
 
 class AppThemes {
   static ThemeData get darkGray => ThemeData(
@@ -140,7 +141,7 @@ class GrokGuideApp extends StatelessWidget {
           title: 'Grok Guide',
           debugShowCheckedModeBanner: false,
           theme: theme == AppTheme.darkGray ? AppThemes.darkGray : AppThemes.lightGray,
-          home: const MainScaffold(),
+          home: const SplashScreen(),
         );
       },
     );
