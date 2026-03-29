@@ -33,7 +33,7 @@ client = OpenAI(
           step: '3',
           title: 'Premier appel API',
           content: '''response = client.chat.completions.create(
-    model="grok-beta",
+    model="grok-3",
     messages=[
         {"role": "system", "content": "Tu es Grok, un assistant IA par xAI."},
         {"role": "user", "content": "Explique l'IA en 3 lignes"},
@@ -56,7 +56,7 @@ const client = new OpenAI({
 });
 
 const response = await client.chat.completions.create({
-  model: "grok-beta",
+  model: "grok-3",
   messages: [{ role: "user", content: "Explique l'IA en 3 lignes" }],
 });
 console.log(response.choices[0].message.content);''',
@@ -96,7 +96,7 @@ print(data['choices'][0]['message']['content']);''',
   -H "Authorization: Bearer VOTRE_CLE_XAI" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "grok-beta",
+    "model": "grok-3",
     "messages": [{"role": "user", "content": "Explique l'\''IA en 3 lignes"}]
   }' ''',
           color: context.palette[1],

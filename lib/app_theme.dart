@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 final themeNotifier = ValueNotifier<AppTheme>(AppTheme.darkGray);
 final grokNavIndex = ValueNotifier<int>(0);
@@ -97,7 +98,15 @@ class CodeBlock extends StatelessWidget {
                           fontWeight: FontWeight.w600)),
                   IconButton(
                     icon: Icon(Icons.copy, size: 16, color: context.accentLight),
-                    onPressed: () {},
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(text: code));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Code copié !'),
+                          duration: Duration(seconds: 1),
+                        ),
+                      );
+                    },
                     padding: EdgeInsets.zero,
                     constraints: const BoxConstraints(),
                   ),

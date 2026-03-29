@@ -64,7 +64,7 @@ class _PythonExamples extends StatelessWidget {
 client = OpenAI(api_key="VOTRE_CLE", base_url="https://api.x.ai/v1")
 
 response = client.chat.completions.create(
-    model="grok-beta",
+    model="grok-3",
     messages=[{"role": "user", "content": "Explique le machine learning"}],
 )
 print(response.choices[0].message.content)''',
@@ -73,7 +73,7 @@ print(response.choices[0].message.content)''',
         const CodeBlock(
           title: 'Python — System prompt',
           code: '''response = client.chat.completions.create(
-    model="grok-beta",
+    model="grok-3",
     messages=[
         {"role": "system", "content": "Tu es un expert Python. Réponds avec des exemples."},
         {"role": "user", "content": "Comment lire un fichier CSV ?"},
@@ -85,7 +85,7 @@ print(response.choices[0].message.content)''',
         const CodeBlock(
           title: 'Python — Streaming',
           code: r'''stream = client.chat.completions.create(
-    model="grok-beta",
+    model="grok-3",
     messages=[{"role": "user", "content": "Écris un poème sur l'espace"}],
     stream=True,
 )
@@ -101,7 +101,7 @@ for chunk in stream:
 
 def chat(user_input):
     messages.append({"role": "user", "content": user_input})
-    response = client.chat.completions.create(model="grok-beta", messages=messages)
+    response = client.chat.completions.create(model="grok-3", messages=messages)
     reply = response.choices[0].message.content
     messages.append({"role": "assistant", "content": reply})
     return reply
@@ -131,7 +131,7 @@ const client = new OpenAI({
 });
 
 const response = await client.chat.completions.create({
-  model: "grok-beta",
+  model: "grok-3",
   messages: [{ role: "user", content: "Explique le machine learning" }],
 });
 console.log(response.choices[0].message.content);''',
@@ -140,7 +140,7 @@ console.log(response.choices[0].message.content);''',
         const CodeBlock(
           title: 'JavaScript — Streaming',
           code: r'''const stream = await client.chat.completions.create({
-  model: "grok-beta",
+  model: "grok-3",
   messages: [{ role: "user", content: "Écris un poème sur l'espace" }],
   stream: true,
 });
