@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen>
       if (mounted) {
         Navigator.of(context).pushReplacement(
           PageRouteBuilder(
-            pageBuilder: (_, __, ___) => const MainScaffold(),
+            pageBuilder: (context, animation, secondary) => const MainScaffold(),
             transitionDuration: Duration.zero,
           ),
         );
@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen>
       backgroundColor: Colors.black,
       body: AnimatedBuilder(
         animation: _ctrl,
-        builder: (_, __) => Opacity(
+        builder: (context, child) => Opacity(
           opacity: _opacity.value,
           child: Transform.scale(
             scale: _scale.value,
